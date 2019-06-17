@@ -48,7 +48,6 @@ class ProductTableSeeder extends Seeder
 
 
             $sizes = Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();
-
             $product->size()->attach($sizes);
 
 
