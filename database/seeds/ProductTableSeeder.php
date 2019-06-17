@@ -46,6 +46,12 @@ class ProductTableSeeder extends Seeder
             $randomImage = $images[array_rand($images)]; // Get one random image from folder
             $product->picture = basename($randomImage);
 
+
+            $sizes = Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();
+
+            $product->size()->attach($sizes);
+
+
             $product->save();
         });
     }
