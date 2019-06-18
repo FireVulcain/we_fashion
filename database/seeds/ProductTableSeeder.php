@@ -16,8 +16,8 @@ class ProductTableSeeder extends Seeder
     {
 
         // Create all the genre available
-        Genre::create([ 'name' => 'M' ]);
-        Genre::create([ 'name' => 'F' ]);
+        Genre::create([ 'name' => 'Homme' ]);
+        Genre::create([ 'name' => 'Femme' ]);
 
 
         // Create all the size available
@@ -36,15 +36,20 @@ class ProductTableSeeder extends Seeder
 
             // Check genre type
             switch ($randomGenre) {
-                case 1: $images = glob(public_path() . '/images/hommes/*');
+                case 1:
+                    $path = 'hommes';
+                    $images = glob(public_path() . '/images/' . $path . '/*' );
                     break;
-                case 2: $images = glob(public_path() . '/images/femmes/*');
+                case 2:
+                    $path = 'femmes';
                     break;
                 default:
             }
 
+
+            $images = glob(public_path() . '/images/' . $path . '/*');
             $randomImage = $images[array_rand($images)]; // Get one random image from folder
-            $product->picture = basename($randomImage);
+            $product->picture = $path . '/' . basename($randomImage);
 
 
             $sizes = Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();

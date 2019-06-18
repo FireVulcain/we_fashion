@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'FrontController@index');
+
+Route::get('product/{id}', 'FrontController@show')->where(['id' => '[0-9]+']);
+
+Route::get('sales', 'FrontController@sales');
+
+Route::get('categorie/{id}', 'FrontController@categories')->where(['id' => '[0-9]']);
