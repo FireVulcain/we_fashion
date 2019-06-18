@@ -10,6 +10,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->sentence(),
         'description' => $faker->paragraph(),
         'price' => $faker->randomNumber(3),
-        'reference' => $faker->regexify('[a-z0-9]{16}')
+        'reference' => $faker->regexify('[a-z0-9]{16}'),
+        'sales' => $faker->randomElement(['sale', 'standard'])
     ];
 });
