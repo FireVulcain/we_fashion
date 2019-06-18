@@ -15,12 +15,12 @@ class ProductTableSeeder extends Seeder
     public function run()
     {
 
-        // Create all the categorie available
+        // Create all the categories available
         Categorie::create([ 'name' => 'Homme' ]);
         Categorie::create([ 'name' => 'Femme' ]);
 
 
-        // Create all the size available
+        // Create all the sizes available
         Size::create([ 'name' => 'XS' ]);
         Size::create([ 'name' => 'S' ]);
         Size::create([ 'name' => 'M' ]);
@@ -29,6 +29,7 @@ class ProductTableSeeder extends Seeder
 
         // Create 80 products
         factory(Product::class, 80)->create()->each(function( $product ){
+            // Associate a andom categorie to a product
             $randomCategorie = rand(1, 2);
             $categorie = Categorie::find($randomCategorie);
             $product->categorie()->associate($categorie);
@@ -36,25 +37,29 @@ class ProductTableSeeder extends Seeder
 
             // Check categorie type
             switch ($randomCategorie) {
-                case 1:
-                    $path = 'hommes';
-                    $images = glob(public_path() . '/images/' . $path . '/*' );
+                case 1: $path = 'hommes';
                     break;
-                case 2:
-                    $path = 'femmes';
+                case 2: $path = 'femmes';
                     break;
                 default:
             }
 
-
+            // Generate a random image from folder
             $images = glob(public_path() . '/images/' . $path . '/*');
-            $randomImage = $images[array_rand($images)]; // Get one random image from folder
+            $randomImage = $images[array_rand($images)];
             $product->picture = $path . '/' . basename($randomImage);
 
 
+            // Generate multiple (random) size for a product
             $sizes = Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();
             $product->size()->attach($sizes);
 
+
+            // Generate random "on sale" product
+            $salesArray = ['sale', 'standard'];
+            $saleKey = shuffle($salesArray);
+            $saleValue = $salesArray[$saleKey];
+            $product->sales = $saleValue;
 
             $product->save();
         });

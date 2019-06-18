@@ -16,17 +16,19 @@
             <p class="genderProduct">Vêtements pour {{$products->categorie->name}}</p>
 
             <div class="form-group">
-                <select name="sizesProduct" class="form-control sizesProduct">
-                    <option value="default">Taille</option>
-                    @forelse($products->size as $product)
-                        <option value="{{$product->name}}">{{$product->name}}</option>
-                    @empty
-                    @endforelse
-                </select>
+                <label class="form-check-label">
+                    <select name="sizesProduct" class="form-control sizesProduct">
+                        <option value="default">Taille</option>
+                        @forelse($products->size as $product)
+                            <option value="{{$product->name}}">{{$product->name}}</option>
+                        @empty
+                        @endforelse
+                    </select>
+                </label>
             </div>
 
             @if($products->sales === 'sale')
-                <p class="salesProduct text-uppercase">En solde</p>
+                <p class="salesProduct">En solde</p>
             @endif
 
             <a href="#" class="buyProduct btn btn-outline-primary">Acheter</a>
