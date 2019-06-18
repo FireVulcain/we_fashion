@@ -11,15 +11,14 @@ use App\Product;
 class FrontController extends Controller
 {
     protected $paginate = 6;
+
     public function index(){
         $products = Product::paginate($this->paginate);
         return view('front.index', ['products' => $products]);
-
-
     }
+
     public function show($id){
         $products = Product::find($id);
-
         return view('front.show', ['products' => $products]);
     }
 

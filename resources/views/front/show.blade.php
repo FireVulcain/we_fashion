@@ -13,7 +13,7 @@
             <p class="priceProduct">Prix : {{$products->price}} €</p>
             <p class="referenceProduct">Référence du produit : {{$products->reference}}</p>
 
-            <p class="genderProduct">Vêtements pour {{$products->genre->name}}</p>
+            <p class="genderProduct">Vêtements pour {{$products->categorie->name}}</p>
 
             <div class="form-group">
                 <select name="sizesProduct" class="form-control sizesProduct">

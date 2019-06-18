@@ -1,6 +1,6 @@
 <?php
 
-use App\Genre;
+use App\Categorie;
 use App\Product;
 use App\Size;
 use Illuminate\Database\Seeder;
@@ -15,9 +15,9 @@ class ProductTableSeeder extends Seeder
     public function run()
     {
 
-        // Create all the genre available
-        Genre::create([ 'name' => 'Homme' ]);
-        Genre::create([ 'name' => 'Femme' ]);
+        // Create all the categorie available
+        Categorie::create([ 'name' => 'Homme' ]);
+        Categorie::create([ 'name' => 'Femme' ]);
 
 
         // Create all the size available
@@ -29,13 +29,13 @@ class ProductTableSeeder extends Seeder
 
         // Create 80 products
         factory(Product::class, 80)->create()->each(function( $product ){
-            $randomGenre = rand(1, 2);
-            $genre = Genre::find($randomGenre);
-            $product->genre()->associate($genre);
+            $randomCategorie = rand(1, 2);
+            $categorie = Categorie::find($randomCategorie);
+            $product->categorie()->associate($categorie);
 
 
-            // Check genre type
-            switch ($randomGenre) {
+            // Check categorie type
+            switch ($randomCategorie) {
                 case 1:
                     $path = 'hommes';
                     $images = glob(public_path() . '/images/' . $path . '/*' );

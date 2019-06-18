@@ -14,9 +14,9 @@ class AlterProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->unsignedInteger('genre_id')->nullable();
+            $table->unsignedInteger('categorie_id')->nullable();
 
-            $table->foreign('genre_id')->references('id')->on('genres');
+            $table->foreign('categorie_id')->references('id')->on('categories');
         });
     }
 
@@ -28,8 +28,8 @@ class AlterProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign('products_genre_id_foreign');
-            $table->dropColumn('genre_id');
+            $table->dropForeign('products_categorie_id_foreign');
+            $table->dropColumn('categories');
         });
     }
 }

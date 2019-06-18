@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function genre(){
-        return $this->belongsTo(Genre::class);
+    public function categorie(){
+        return $this->belongsTo(Categorie::class);
     }
 
     public function size(){
@@ -19,6 +19,6 @@ class Product extends Model
     }
 
     public function scopeCategories($query, $id){
-        return $query->where('genre_id', $id);
+        return $query->where('categorie_id', $id);
     }
 }
