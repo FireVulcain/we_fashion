@@ -2,14 +2,18 @@
 .pagination{ justify-content: flex-end; }
 
 /* Menu */
-.nav{margin-bottom: 15px;}
+.nav{margin-bottom: 15px; align-items: center;}
 .nav li a{display : inline-block;}
 .nav li a{
     font-size: 20px;
     text-transform: uppercase;
     color : #000000;
 }
-.nav li a.logo_title{color : #66EB9A;}
+.nav .logo_title{
+    color : #66EB9A;
+    text-transform: uppercase;
+    font-size: 20px;
+}
 
 /* Footer */
 footer{padding : 50px 0;}
@@ -85,6 +89,25 @@ footer .socialMedia li:last-child{
     font-size: 16px;
 }
 
-.sizesProduct{
-    width: 200px;
+.sizesProduct{ width: 200px; }
+
+
+/* Admin */
+.nav.adminNav{
+    padding : 10px 20px;
+    margin-bottom: 0;
+}
+
+.homeButton{
+    width: 30px;
+    margin-top: 5px;
+}
+.logoutButton{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.addNew{
+    display : inline-block;
+    margin-bottom: 20px;
 }

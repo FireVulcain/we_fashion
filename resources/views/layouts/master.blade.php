@@ -15,7 +15,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                @include('partials.menu')
+                @if(Request::is('admin/*'))
+                    @include('back.menu')
+                @else
+                    @include('partials.menu')
+                @endif
             </div>
         </div>
         <div class="row">
