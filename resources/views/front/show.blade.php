@@ -13,7 +13,7 @@
             <p class="priceProduct">Prix : {{$products->price}} €</p>
             <p class="referenceProduct">Référence du produit : {{$products->reference}}</p>
 
-            <p class="genderProduct">Vêtements pour {{$products->categorie->name}}</p>
+            <p class="genderProduct">Catégorie : {{$products->categorie->name}}</p>
 
             <div class="form-group">
                 <label class="form-check-label">

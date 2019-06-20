@@ -7,7 +7,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ (request()->is('sales')) ? 'active' : '' }}" href="{{url('/sales')}}">Soldes</a>
-                    <a class="nav-link {{ (request()->is('categorie/1')) ? 'active' : '' }}" href="{{url('categorie/1')}}">Homme</a>
+                    <a class="nav-link {{ (request()->is('categories')) ? 'active' : '' }}" href="{{url('categories')}}">Homme</a>
                     <a class="nav-link {{ (request()->is('categorie/2')) ? 'active' : '' }}" href="{{url('categorie/2')}}">Femme</a>
                 </li>
             </ul>

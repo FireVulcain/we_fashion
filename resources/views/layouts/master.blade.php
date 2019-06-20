@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 </head>
 <body>
-    <div class="container">
+    <div id='app' class="container">
         <div class="row">
             <div class="col-md-12">
                 @if(Request::is('admin/*'))
@@ -31,6 +31,8 @@
             @include('partials.footer')
         </footer>
     </div>
+    @section('scripts')
     <script src="{{asset('js/app.js')}}"></script>
+    @show
 </body>
 </html>

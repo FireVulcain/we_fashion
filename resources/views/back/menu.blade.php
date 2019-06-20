@@ -5,6 +5,8 @@
                 <li class="nav-item logo_title">We Fashion</li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/admin/products')}}">Produits</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{url('/admin/categories')}}">Catégories</a>
                 </li>
             </ul>

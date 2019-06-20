@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Categorie;
 use App\Product;
+use App\Size;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -28,18 +30,50 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Categorie::pluck('name', 'id')->all();
+        $sizes = Size::pluck('name', 'id')->all();
+        return view('back.product.create', ['categories' => $categories, 'sizes' => $sizes]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required|min:5|max:100',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'picture' => 'required|image:max:3000',
+            'status' => 'required|in:published,unpublished',
+            'sales' => 'required|in:sale,standard',
+            'reference' => 'required|alpha_num',
+            'categorie_id' => 'required|integer'
+        ]);
+
+
+        // Store image inside a folder named 'products'
+        $file = $request->file('picture');
+        if(!empty($file)){
+            $file->store('products');
+        }
+
+
+        $imgName = $request->picture->hashName();
+
+        // Rewrite $request->picture as a path
+        $datas = $request->all();
+        $datas['picture'] =  'products/' . $imgName;
+
+        $product = Product::create($datas);
+
+        $product->size()->attach($request->sizes);
+        return redirect()->route('products.index')->with('message', 'Produit ajouté avec succès !');
     }
 
     /**
@@ -84,6 +118,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }
+

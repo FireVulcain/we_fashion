@@ -111,3 +111,9 @@ footer .socialMedia li:last-child{
     display : inline-block;
     margin-bottom: 20px;
 }
+
+.delete input[type="submit"]{cursor: pointer;}
+
+.customMessage p{ margin-bottom: 0; }
+
+.imgInput{margin-bottom: 10px;}

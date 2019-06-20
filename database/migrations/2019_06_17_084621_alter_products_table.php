@@ -16,7 +16,7 @@ class AlterProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->unsignedInteger('categorie_id')->nullable();
 
-            $table->foreign('categorie_id')->references('id')->on('categories');
+            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('SET NULL');
         });
     }
 

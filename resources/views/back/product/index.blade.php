@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-md-12 text-right">
-        <a href="#" class="addNew"><button class="btn btn-primary">Nouveau</button></a>
+        <a href="{{route('products.create')}}" class="addNew"><button class="btn btn-outline-primary">Nouveau</button></a>
     </div>
     <table class="table table-striped adminProductInfo">
         <thead>
@@ -20,19 +20,13 @@
                 <td>{{$product->name}}</td>
                 <td>{{ucfirst($product->categorie->name?? 'aucune catégorie')}}</td>
                 <td>{{$product->price}} €</td>
+                <td>{{$product->status}}</td>
+                <td><a href="#" class="btn btn-outline-primary">Modifier</a></td>
                 <td>
-                    @if($product->status == 'published')
-                        <button type="button" class="btn btn-success">published</button>
-                    @else
-                        <button type="button" class="btn btn-warning">unpublished</button>
-                    @endif
-                </td>
-                <td><a href="#">Edit</a></td>
-                <td>
-                    <form class="delete" method="POST" action="#">
+                    <form class="delete" method="POST" action="{{route('products.destroy', $product->id)}}">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
-                        <input class="btn-danger" type="submit" value="Delete"/>
+                        <input class="btn btn-outline-danger" type="submit" value="Delete"/>
                     </form>
                 </td>
             </tr>
@@ -42,4 +36,8 @@
         </tbody>
     </table>
     {{$products->links()}}
+@endsection
+@section('scripts')
+    @parent
+    <script src="{{asset('js/confirm.js')}}"></script>
 @endsection

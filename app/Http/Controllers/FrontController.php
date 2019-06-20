@@ -29,6 +29,6 @@ class FrontController extends Controller
 
     public function categories($id){
         $products = Product::categories($id)->paginate($this->paginate);
-        return view('front.categorie', ['products' => $products]);
+        return view('front.categories', ['products' => $products]);
     }
 }
