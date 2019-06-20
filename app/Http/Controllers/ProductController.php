@@ -95,19 +95,51 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products = Product::find($id);
+        $categories = Categorie::pluck('name', 'id')->all();
+        $sizes = Size::pluck('name', 'id')->all();
+
+        return view('back.product.edit', ['products' => $products, 'categories' => $categories, 'sizes' => $sizes]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:5|max:100',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'picture' => 'image:max:3000',
+            'status' => 'required|in:published,unpublished',
+            'sales' => 'required|in:sale,standard',
+            'reference' => 'required|alpha_num',
+            'categorie_id' => 'required|integer',
+            'sizes' => 'required'
+        ]);
+
+
+        $datas = $request->all();
+
+        $file = $request->file('picture');
+        if(!empty($file)){
+            $file->store('products');
+            $imgName = $request->picture->hashName();
+            $datas['picture'] =  'products/' . $imgName; // Rewrite $datas['picture'] as a path
+        }
+
+
+        $product = Product::find($id);
+        $product->update($datas);
+        $product->size()->sync($request->sizes);
+
+        return redirect()->route('products.index')->with('message', 'Votre produit a bien été mise à jour');
     }
 
     /**

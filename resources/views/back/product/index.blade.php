@@ -21,7 +21,7 @@
                 <td>{{ucfirst($product->categorie->name?? 'aucune catégorie')}}</td>
                 <td>{{$product->price}} €</td>
                 <td>{{$product->status}}</td>
-                <td><a href="#" class="btn btn-outline-primary">Modifier</a></td>
+                <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-outline-primary">Modifier</a></td>
                 <td>
                     <form class="delete" method="POST" action="{{route('products.destroy', $product->id)}}">
                         {{csrf_field()}}
