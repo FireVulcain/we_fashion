@@ -53,7 +53,8 @@ class ProductController extends Controller
             'status' => 'required|in:published,unpublished',
             'sales' => 'required|in:sale,standard',
             'reference' => 'required|alpha_num',
-            'categorie_id' => 'required|integer'
+            'categorie_id' => 'required|integer',
+            'sizes' => 'required'
         ]);
 
 

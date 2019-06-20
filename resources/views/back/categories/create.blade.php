@@ -11,7 +11,7 @@
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="name">Nom :</label>
-                        <input id="name" class="form-control" name="name" type="text">
+                        <input id="name" class="form-control" name="name" type="text" value="{{old('name')}}">
                         @if($errors->has('name')) <span class="alert-danger">{{$errors->first('name')}}</span>@endif
                     </div>
                     <button style="" class="btn btn-outline-primary" type="submit">Ajouter</button>
