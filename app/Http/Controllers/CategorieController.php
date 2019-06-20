@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Categorie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 
 class CategorieController extends Controller
 {

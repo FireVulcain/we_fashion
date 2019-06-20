@@ -67,13 +67,12 @@ class ProductController extends Controller
 
         $imgName = $request->picture->hashName();
 
-        // Rewrite $request->picture as a path
         $datas = $request->all();
-        $datas['picture'] =  'products/' . $imgName;
+        $datas['picture'] =  'products/' . $imgName; // Rewrite $datas['picture'] as a path
 
         $product = Product::create($datas);
-
         $product->size()->attach($request->sizes);
+
         return redirect()->route('products.index')->with('message', 'Produit ajouté avec succès !');
     }
 

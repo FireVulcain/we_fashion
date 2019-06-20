@@ -31,7 +31,11 @@
                 <p class="salesProduct">En solde</p>
             @endif
 
-            <a href="#" class="buyProduct btn btn-outline-primary">Acheter</a>
+            @if($products->status === 'published')
+                <a href="#" class="buyProduct btn btn-outline-primary">Acheter</a>
+            @else
+                <p class="alert alert-danger">Ce produit n'est pas ou plus disponible à la vente</p>
+            @endif
         </div>
     </div>
 @endsection
