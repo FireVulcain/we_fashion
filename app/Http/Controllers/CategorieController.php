@@ -40,6 +40,8 @@ class CategorieController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:categories'
         ]);
+
+        // insert the datas inside the database
         $categories = Categorie::create($request->all());
 
         return redirect()->route('categories.index')->with('message', 'Catégorie créée');
@@ -79,6 +81,8 @@ class CategorieController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [ 'name' => 'required' ]);
+
+        // update the datas inside the database
         $categories = Categorie::find($id);
         $categories->update($request->all());
 

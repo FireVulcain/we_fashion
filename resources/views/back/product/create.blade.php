@@ -31,13 +31,17 @@
                     </div>
                     <div class="form-group custom-radio">
                         <h2>Status : </h2>
-                        <input type="radio" name="status" value="published" @if(old('status') == 'published') checked @endif> Published
-                        <input type="radio" name="status" value="unpublished" @if(old('status') == 'unpublished') checked @endif> Unpublished
+                        <input type="radio" name="status" value="published" @if(old('status') == 'published') checked @endif>
+                        <label for="status">Publié</label>
+                        <input type="radio" name="status" value="unpublished" @if(old('status') == 'unpublished') checked @endif>
+                        <label for="status">Non publié</label>
                         @if($errors->has('status')) <span class="alert-danger">{{$errors->first('status')}}</span>@endif
                     </div>
                     <div class="form-group custom-radio">
-                        <input type="radio" name="sales" value="sale" @if(old('sales') == 'sale') checked @endif> En solde
-                        <input type="radio" name="sales" value="standard" @if(old('sales') == 'standard') checked @endif> Standard
+                        <input type="radio" name="sales" value="sale" @if(old('sales') == 'sale') checked @endif>
+                        <label for="sales">En solde</label>
+                        <input type="radio" name="sales" value="standard" @if(old('sales') == 'standard') checked @endif>
+                        <label for="sales">Standard</label>
                         @if($errors->has('sales')) <span class="alert-danger">{{$errors->first('sales')}}</span>@endif
                     </div>
                     <div class="form-group">

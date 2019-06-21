@@ -36,13 +36,13 @@
                     </div>
                     <div class="form-group custom-radio">
                         <h2>Status : </h2>
-                        <input type="radio" name="status" @if($products->status == 'published') checked @endif value="published"> Published
-                        <input type="radio" name="status" @if($products->status == 'unpublished') checked @endif value="unpublished"> Unpublished
+                        <input type="radio" name="status" @if($products->status == 'published') checked @endif value="published"> <label for="status">Publié</label>
+                        <input type="radio" name="status" @if($products->status == 'unpublished') checked @endif value="unpublished">  <label for="status">Non publié</label>
                         @if($errors->has('status')) <span class="alert-danger">{{$errors->first('status')}}</span>@endif
                     </div>
                     <div class="form-group custom-radio">
-                        <input type="radio" name="sales" @if($products->sales == 'sale') checked @endif value="sale"> En solde
-                        <input type="radio" name="sales" @if($products->sales == 'standard') checked @endif value="standard"> Standard
+                        <input type="radio" name="sales" @if($products->sales == 'sale') checked @endif value="sale"> <label for="sales">En solde</label>
+                        <input type="radio" name="sales" @if($products->sales == 'standard') checked @endif value="standard"> <label for="sales">Standard</label>
                         @if($errors->has('sales')) <span class="alert-danger">{{$errors->first('sales')}}</span>@endif
                     </div>
                     <div class="form-group">
@@ -68,7 +68,7 @@
                     @endforelse
                     @if($errors->has('sizes')) <span class="alert-danger">{{$errors->first('sizes')}}</span>@endif
                     <br>
-                    <button class="btn btn-outline-primary" type="submit">Modifier</button>
+                    <button class="btn btn-outline-primary" type="submit">Éditer</button>
                 </form>
             </div>
         </div>

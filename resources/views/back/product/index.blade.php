@@ -20,13 +20,17 @@
                 <td>{{$product->name}}</td>
                 <td>{{ucfirst($product->categorie->name?? 'aucune catégorie')}}</td>
                 <td>{{$product->price}} €</td>
-                <td>{{$product->status}}</td>
-                <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-outline-primary">Modifier</a></td>
+                @if($product->status === 'published')
+                    <td>Publié</td>
+                @else
+                    <td>Non publié</td>
+                @endif
+                <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-outline-primary">Éditer</a></td>
                 <td>
                     <form class="delete" method="POST" action="{{route('products.destroy', $product->id)}}">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
-                        <input class="btn btn-outline-danger" type="submit" value="Delete"/>
+                        <input class="btn btn-outline-danger" type="submit" value="Supprimer"/>
                     </form>
                 </td>
             </tr>

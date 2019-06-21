@@ -1,119 +1,159 @@
-/* Commun */
-.pagination{ justify-content: flex-end; }
+/*
+################
+    Commun
+################
+*/
+.pagination{ justify-content : flex-end; }
 
-/* Menu */
-.nav{margin-bottom: 15px; align-items: center;}
-.nav li a{display : inline-block;}
+
+/*
+################
+     Menu
+################
+*/
+.nav{
+    margin-bottom : 15px;
+    align-items   : center;
+}
+
 .nav li a{
-    font-size: 20px;
-    text-transform: uppercase;
-    color : #000000;
-}
-.nav .logo_title{
-    color : #66EB9A;
-    text-transform: uppercase;
-    font-size: 20px;
+    display        : inline-block;
+    font-size      : 20px;
+    text-transform : uppercase;
+    color          : #000000;
 }
 
-/* Footer */
-footer{padding : 50px 0;}
+.nav .logo_title{
+    color          : #66EB9A;
+    text-transform : uppercase;
+    font-size      : 20px;
+}
+
+/*
+################
+     Footer
+################
+*/
+footer{ padding : 50px 0; }
 
 footer a,
-footer a:hover{color : #000;}
+footer a:hover{ color : #000; }
 
-footer .col-md-4{margin: 0 auto;}
+footer .col-md-4{ margin : 0 auto; }
+
 footer .col-md-4 p{
-    text-align: center;
-    font-size: 16px;
+    text-align : center;
+    font-size  : 16px;
+}
+
+footer .socialMedia ul{ text-align : center; }
+
+footer .socialMedia li{
+    display        : inline-block;
+    width          : 20%;
+    vertical-align : middle;
 }
 
 footer .socialMedia ul img{
-    width: 30px;
-    height: 30px;
+    width  : 30px;
+    height : 30px;
 }
 
-footer .socialMedia ul{text-align: center;}
-footer .socialMedia li{
-    display : inline-block;
-    width: 20%;
-    vertical-align: middle;
-}
 footer .socialMedia li:last-child{
-    display : block;
-    width: 100%;
-    margin-top: 20px;
-    text-align: center;
+    display    : block;
+    width      : 100%;
+    margin-top : 20px;
+    text-align : center;
 }
 
-/* Page accueil */
-.nbProducts{font-size: 1rem;}
+
+/*
+################
+    Home Page
+################
+*/
+.nbProducts{ font-size : 1rem; }
 
 .products{
-    margin-bottom: 50px;
-    width: 100% !important;
+    margin-bottom : 50px;
+    width         : 100% !important;
 }
 
 .products .imgProduct{
-    width: 100%;
-    height : 450px;
-    overflow: hidden;
+    width    : 100%;
+    height   : 450px;
+    overflow : hidden;
 }
-.products .card-body{ min-height: 140px; }
-.products a:hover{text-decoration: none;}
+
+.products .card-body{ min-height : 140px; }
+
+.products a:hover{ text-decoration : none; }
+
 .products .nameProduct,
 .products .priceProduct{
-    margin: 0;
+    margin  : 0;
     padding : 0;
-    color : #000000;
+    color   : #000000;
 }
 
+/*
+################
+  Product page
+################
+*/
+.productPage{ justify-content : center; }
 
-/* Page produit */
-.productPage{justify-content: center;}
-.productPage img{width: 100%;}
+.productPage img{ width : 100%; }
 
 .productPage h1{
-    font-size: 24px;
-    padding : 0;
-    margin : 0 0 10px;
+    font-size : 24px;
+    padding   : 0;
+    margin    : 0 0 10px;
 }
+
 .productPage .descriptionProduct{
-    margin: 0;
-    padding: 10px 0 50px;
-    font-size: 16px;
+    margin    : 0;
+    padding   : 10px 0 50px;
+    font-size : 16px;
 }
 
 .salesProduct{
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 16px;
+    font-weight    : bold;
+    text-transform : uppercase;
+    font-size      : 16px;
 }
 
-.sizesProduct{ width: 200px; }
+.sizesProduct{ width : 200px; }
 
-
-/* Admin */
+/*
+################
+     Admin
+################
+*/
 .nav.adminNav{
-    padding : 10px 20px;
-    margin-bottom: 0;
+    padding       : 10px 20px;
+    margin-bottom : 0;
 }
 
 .homeButton{
-    width: 30px;
-    margin-top: 5px;
+    width      : 30px;
+    margin-top : 5px;
 }
+
 .logoutButton{
-    margin-left: 10px;
-    margin-top: 5px;
+    margin-left : 10px;
+    margin-top  : 5px;
 }
 
 .addNew{
-    display : inline-block;
-    margin-bottom: 20px;
+    display       : inline-block;
+    margin-bottom : 20px;
 }
 
-.delete input[type="submit"]{cursor: pointer;}
+.delete input[type="submit"]{ cursor : pointer; }
 
-.customMessage p{ margin-bottom: 0; }
+.customMessage p{ margin-bottom : 0; }
 
-.imgInput{margin-bottom: 10px;}
+.imgInput{ margin-bottom : 10px; }
+
+.custom-radio label{ margin-right : 10px; }

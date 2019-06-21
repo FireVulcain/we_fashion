@@ -14,7 +14,7 @@
                         <label for="name">Nom :</label>
                         <input class="form-control" type="text" id="name" name="name" value="{{$categories->name}}">
                     </div>
-                    <button style="" class="btn btn-outline-primary" type="submit">Modifier</button>
+                    <button style="" class="btn btn-outline-primary" type="submit">Éditer</button>
                 </form>
             </div>
         </div>

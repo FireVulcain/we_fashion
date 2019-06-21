@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
+    /**
+     * Number of element per page
+     * @var int
+     */
     protected $paginate = 15;
 
     /**
@@ -52,24 +56,27 @@ class ProductController extends Controller
             'picture' => 'required|image:max:3000',
             'status' => 'required|in:published,unpublished',
             'sales' => 'required|in:sale,standard',
-            'reference' => 'required|alpha_num',
+            'reference' => 'required|alpha_num|min:16|max:16',
             'categorie_id' => 'required|integer',
             'sizes' => 'required'
         ]);
 
 
-        // Store image inside a folder named 'products'
+        // Store the image inside a folder named 'products'
         $file = $request->file('picture');
         if(!empty($file)){
             $file->store('products');
         }
 
 
+        // Get img name
         $imgName = $request->picture->hashName();
 
+        // store the datas && rewrite "$datas['picture']" as a path
         $datas = $request->all();
-        $datas['picture'] =  'products/' . $imgName; // Rewrite $datas['picture'] as a path
+        $datas['picture'] =  'products/' . $imgName;
 
+        // insert the datas inside the database
         $product = Product::create($datas);
         $product->size()->attach($request->sizes);
 
@@ -119,22 +126,25 @@ class ProductController extends Controller
             'picture' => 'image:max:3000',
             'status' => 'required|in:published,unpublished',
             'sales' => 'required|in:sale,standard',
-            'reference' => 'required|alpha_num',
+            'reference' => 'required|alpha_num|min:16|max:16',
             'categorie_id' => 'required|integer',
             'sizes' => 'required'
         ]);
 
-
+        // store the datas
         $datas = $request->all();
 
+
+        // Store the image inside a folder named 'products' if the picture exist
         $file = $request->file('picture');
         if(!empty($file)){
             $file->store('products');
             $imgName = $request->picture->hashName();
-            $datas['picture'] =  'products/' . $imgName; // Rewrite $datas['picture'] as a path
+            $datas['picture'] =  'products/' . $imgName; // Rewrite "$datas['picture']" as a path
         }
 
 
+        // update the datas inside the database
         $product = Product::find($id);
         $product->update($datas);
         $product->size()->sync($request->sizes);
@@ -156,4 +166,3 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 }
-

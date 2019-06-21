@@ -12,7 +12,7 @@
         <ul>
             <li><a href="#">Contactez-nous</a></li>
             <li><a href="#">Livraison & Retour</a></li>
-            <li><a href="#">Condition de vente</a></li>
+            <li><a href="#">Conditions de vente</a></li>
         </ul>
     </div>
     <div class="col-md-4 socialMedia">

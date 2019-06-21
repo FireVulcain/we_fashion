@@ -29,13 +29,13 @@ class ProductTableSeeder extends Seeder
 
         // Create 80 products
         factory(Product::class, 80)->create()->each(function( $product ){
-            // Associate a random categories to a product
+            // Associate a random categorie to a product
             $randomCategorie = rand(1, 2);
             $categorie = Categorie::find($randomCategorie);
             $product->categorie()->associate($categorie);
 
 
-            // Check categories type
+            // Check the categories
             switch ($randomCategorie) {
                 case 1: $categoriesPath = 'hommes';
                     break;
@@ -44,12 +44,12 @@ class ProductTableSeeder extends Seeder
                 default: $categoriesPath = 'products';
             }
 
-            // Generate a random image from folder
+            // Generate a random image from folder depending on the categorie
             $images = glob(public_path() . '/images/' . $categoriesPath . '/*');
             $product->picture = $categoriesPath . '/' . basename($images[array_rand($images)]);
 
 
-            // Generate multiple (random) size for a product
+            // Generate some random size for a product
             $sizes = Size::pluck('id')->shuffle()->slice(0, rand(1, 5))->all();
             $product->size()->attach($sizes);
 

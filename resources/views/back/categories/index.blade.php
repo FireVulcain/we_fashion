@@ -20,12 +20,12 @@
         @forelse($categories as $categorie)
             <tr>
                 <td>{{$categorie->name}}</td>
-                <td><a href="{{route('categories.edit', $categorie->id)}}" class="btn btn-outline-primary">Modifier</a></td>
+                <td><a href="{{route('categories.edit', $categorie->id)}}" class="btn btn-outline-primary">Éditer</a></td>
                 <td>
                     <form class="delete" method="POST" action="{{route('categories.destroy', $categorie->id)}}">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
-                        <input class="btn btn-outline-danger" type="submit" value="Delete"/>
+                        <input class="btn btn-outline-danger" type="submit" value="Supprimer"/>
                     </form>
                 </td>
             </tr>

@@ -16,7 +16,7 @@
                 <img class="homeButton" src="{{asset('images/picto/house.png')}}" alt="picto home">
             </a>
             <a class="logoutButton btn btn-outline-dark" href="#" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                Logout
+                Déconnexion
             </a>
             <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
